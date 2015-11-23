@@ -11,19 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114182513) do
+ActiveRecord::Schema.define(version: 20151123030340) do
 
-  create_table "health_scores", force: :cascade do |t|
-    t.float    "github_score"
-    t.float    "slack_score"
-    t.float    "photo_score"
+  create_table "github_scores", force: :cascade do |t|
+    t.float    "value"
     t.integer  "project_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "photo_scores", force: :cascade do |t|
+    t.float    "value"
+    t.integer  "project_id"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "slack_scores", force: :cascade do |t|
+    t.float    "value"
+    t.integer  "project_id"
+    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

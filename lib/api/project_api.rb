@@ -15,5 +15,12 @@ class Project_API < Grape::API
       project = Project.new(project_params)
       project.save
     end
+
+    params {}
+    # http://localhost:3000/api/document/{:id}
+    get ':id' , requirements: { id: /[0-9]*/ } do
+      project = Project.find(params[:id])
+      data = project.joins()
+    end
   end
 end
