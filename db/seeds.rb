@@ -39,3 +39,18 @@ PhotoScore.create(:project_id => 1, :value => 0.63504, :date => 20151115)
 GithubScore.create(:project_id => 1, :value => 0.24567, :date => 20151116)
 SlackScore.create(:project_id => 1, :value => 0.35635, :date => 20151116)
 PhotoScore.create(:project_id => 1, :value => 0.333504, :date => 20151116)
+
+
+GithubScore.create(:project_id => 2, :value => 0.234567, :date => 20151114)
+SlackScore.create(:project_id => 2, :value => 0.431235, :date => 20151114)
+PhotoScore.create(:project_id => 2, :value => 0.323504, :date => 20151114)
+
+GithubScore.create(:project_id => 2, :value => 0.546567, :date => 20151115)
+SlackScore.create(:project_id => 2, :value => 0.78935, :date => 20151115)
+PhotoScore.create(:project_id => 2, :value => 0.63504, :date => 20151115)
+
+GithubScore.create(:project_id => 2, :value => 0.24567, :date => 20151116)
+SlackScore.create(:project_id => 2, :value => 0.35635, :date => 20151116)
+PhotoScore.create(:project_id => 2, :value => 0.333504, :date => 20151116)
+
+
