@@ -1,14 +1,7 @@
 class HealthScore_API < Grape::API
   resource "health_scores" do
-    helpers do
-      def health_score_params
-        ActionController::Parameters.new(params).permit(:project_id, :github_score, :slack_score, :photo_score)
-        #ここでstrong_parametersの設定
-      end
-    end
-
-    get do
-      HealthScore.all
+    get ':id' , requirements: { id: /[0-9]*/ } do
+      GithubScore.where()
     end
   end
 

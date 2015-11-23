@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123030340) do
+ActiveRecord::Schema.define(version: 20151123062518) do
 
   create_table "github_scores", force: :cascade do |t|
     t.float    "value"
-    t.integer  "project_id"
-    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "photo_scores", force: :cascade do |t|
-    t.float    "value"
+  create_table "health_scores", force: :cascade do |t|
+    t.integer  "github_score_id"
+    t.integer  "slack_score_id"
+    t.integer  "photo_score_id"
     t.integer  "project_id"
     t.date     "date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "photo_scores", force: :cascade do |t|
+    t.float    "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,8 +43,6 @@ ActiveRecord::Schema.define(version: 20151123030340) do
 
   create_table "slack_scores", force: :cascade do |t|
     t.float    "value"
-    t.integer  "project_id"
-    t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  github_score: 1.5
-  slack_score: 1.5
-  photo_score: 1.5
+  github_score_id: 1
+  slack_score_id: 1
+  photo_score_id: 1
   project_id: 1
+  date: 2015-11-23
 
 two:
-  github_score: 1.5
-  slack_score: 1.5
-  photo_score: 1.5
+  github_score_id: 1
+  slack_score_id: 1
+  photo_score_id: 1
   project_id: 1
+  date: 2015-11-23
