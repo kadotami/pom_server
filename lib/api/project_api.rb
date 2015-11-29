@@ -16,11 +16,13 @@ class Project_API < Grape::API
       project.save
     end
 
-    params {}
+    params do
+      requires :name, type: String
+    end
     # http://localhost:3000/api/document/{:id}
-    get ':id' , requirements: { id: /[0-9]*/ } do
-      project = Project.find(params[:id])
-      data = project.joins()
+    get do
+      project = Project.find_by_name(params[:name])
+      return project
     end
   end
 end
