@@ -6,7 +6,7 @@ working_directory "/var/www/#{application}"
 
 listen "/var/run/pom_server/unicorn_#{application}.sock"   # Unix Domain Socket
 
-pid "/var/run/poms_erver/unicorn_#{application}.pid"       # PIDファイル出力先
+pid "/var/run/pom_server/unicorn_#{application}.pid"       # PIDファイル出力先
 
 timeout 60
 
