@@ -47,19 +47,5 @@ GithubScore.create(:value => 0.24567)
 SlackScore.create(:value => 0.35635)
 PhotoScore.create(:value => 0.333504)
 
-HealthScore.create(:project_id => 2, :date => "2015-11-13", :github_score_id => 8, :slack_score_id => 8, :photo_score_id => 8)
-GithubScore.create(:value => 0.234567)
-SlackScore.create(:value => 0.431235)
-PhotoScore.create(:value => 0.323504)
-
-HealthScore.create(:project_id => 2, :date => "2015-11-14", :github_score_id => 9, :slack_score_id => 9, :photo_score_id => 9)
-GithubScore.create(:value => 0.546567)
-SlackScore.create(:value => 0.78935)
-PhotoScore.create(:value => 0.63504)
-
-HealthScore.create(:project_id => 2, :date => "2015-11-15", :github_score_id => 9, :slack_score_id => 9, :photo_score_id => 9)
-GithubScore.create(:value => 0.24567)
-SlackScore.create(:value => 0.35635)
-PhotoScore.create(:value => 0.333504)
 
 
