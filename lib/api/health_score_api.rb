@@ -1,7 +1,13 @@
 class HealthScore_API < Grape::API
   resource "health_scores" do
+    params do
+      optional :limit, type: Integer
+    end
     get ':id' , requirements: { id: /[0-9]*/ } do
-      health_scores = HealthScore.includes(:github_score, :slack_score, :photo_score).where(:project_id => params[:id])
+      health_scores = HealthScore.includes(:github_score, :slack_score, :photo_score)
+                                  .where(:project_id => params[:id])
+                                  .order("date DESC")
+                                  .limit(params[:limit])
       present health_scores, with: Entities::HealthScore
     end
   end
