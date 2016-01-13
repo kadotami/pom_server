@@ -1,0 +1,35 @@
+<input id="project-name" type="text"/>
+<input id="data-limit" type="text"/>
+<button id="display-graph">表示</button>
+
+<div class="latest-area">
+</div>
+
+<div class="weekly-area">
+</div>
+
+<script>
+  var dataset = [3,6,9,12,15];
+  var svg = d3.select("body").append("svg");
+  var circle = svg.selectAll("circle").data(dataset).enter().append("circle");
+  circle.attr("cx", function(d, i) {
+    return (i * 50) + 25;
+  }).attr("cy", 25)
+  .attr("r", function(d) {
+    return d;
+  }).attr("fill", "green").attr("stroke", "yellow")
+  .attr("stroke-width", function(d) {
+    return d / 2;
+  });
+  $("#display-graph").on("click",function(){
+    p_name = $("#project-name").val();
+    limit = $("#data-limit").val();
+    $.getJSON("http://pom.l-u-l.tk/api/projects",{name:p_name},
+      function(json){
+        $.getJSON("http://pom.l-u-l.tk/api/health_scores/"+json.id,{limit: limit},
+          function(data){
+            
+          });
+      });
+  });
+</script>
