@@ -8,19 +8,33 @@
 <div class="weekly-area">
 </div>
 
+<canvas id="healthChart" height="450" width="800"></canvas>
+<canvas id="githubChart" height="450" width="800"></canvas>
+<canvas id="slackChart" height="450" width="800"></canvas>
+<canvas id="photoChart" height="450" width="800"></canvas>
+
 <script>
-  var dataset = [3,6,9,12,15];
-  var svg = d3.select("body").append("svg");
-  var circle = svg.selectAll("circle").data(dataset).enter().append("circle");
-  circle.attr("cx", function(d, i) {
-    return (i * 50) + 25;
-  }).attr("cy", 25)
-  .attr("r", function(d) {
-    return d;
-  }).attr("fill", "green").attr("stroke", "yellow")
-  .attr("stroke-width", function(d) {
-    return d / 2;
-  });
+  function displayLineChart(data,label,dom_id) {
+    var data = {
+        labels: labels,
+        datasets: [
+            {
+                label: "",
+                fillColor: "rgba(220,220,220,0.2)",
+                strokeColor: "rgba(220,220,220,1)",
+                pointColor: "rgba(220,220,220,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: data
+            }
+        ]
+    };
+    var ctx = document.getElementById(dom_id).getContext("2d");
+    var options = { };
+    var lineChart = new Chart(ctx).Line(data, options);
+  }
+
   $("#display-graph").on("click",function(){
     p_name = $("#project-name").val();
     limit = $("#data-limit").val();
@@ -28,7 +42,23 @@
       function(json){
         $.getJSON("http://pom.l-u-l.tk/api/health_scores/"+json.id,{limit: limit},
           function(data){
-            
+            console.log(data)
+            photo_scores = [];
+            github_scores = [];
+            slack_scores = [];
+            avarage_scores = [];
+            labels = [];
+            for (var i = 0; i < data.length; i++) {
+              photo_scores.push(data[i].photo_score.value);
+              github_scores.push(data[i].github_score.value);
+              slack_scores.push(data[i].slack_score.value);
+              labels.push(data[i].date);
+              avarage_scores.push((data[i].github_score.value+data[i].photo_score.value+data[i].slack_score.value)/3);
+            };
+            displayLineChart(avarage_scores,labels,"healthChart");
+            displayLineChart(github_scores,labels,"githubChart");
+            displayLineChart(slack_scores,labels,"slackChart");
+            displayLineChart(photo_scores,labels,"photoChart");
           });
       });
   });
