@@ -7,8 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+<header>
+  <li><a href="/">グラフ</a></li>
+  <li><a href="/unity">映像</a></li>
+</header>
+<div class="content">
+  <%= yield %>
+</div>
 
 </body>
 </html>
